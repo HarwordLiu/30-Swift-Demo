@@ -1,0 +1,6 @@
+framework module Pods_FirstWeek {
+  umbrella header "Pods-FirstWeek-umbrella.h"
+
+  export *
+  module * { export * }
+}
