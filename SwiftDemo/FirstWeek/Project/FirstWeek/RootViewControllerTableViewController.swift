@@ -41,8 +41,10 @@ class RootViewControllerTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let viewController = UIViewController(nibName: dataSources[indexPath.row] + "ViewController", bundle: nil)
-        viewController.title = dataSources[indexPath.row];
+        let nameSpace = Bundle.main.infoDictionary!["CFBundleExecutable"] as! String
+        let controllerClass:AnyClass = NSClassFromString(nameSpace + "." + dataSources[indexPath.row] + "ViewController")!
+        let realClass = controllerClass as! UIViewController.Type
+        let viewController = realClass.init()
         navigationController?.pushViewController(viewController, animated: true)
     }
 }

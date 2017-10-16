@@ -10,10 +10,23 @@ import UIKit
 
 class FirstViewController: UIViewController {
 
+    @IBOutlet weak var inputTextField: UITextField!
+    
+    @IBOutlet weak var percentLabel: UILabel!
+    
+    @IBOutlet weak var tipLabel: UILabel!
+    
+    @IBOutlet weak var tipTotalLabel: UILabel!
+    
+    @IBOutlet weak var percentSilder: UISlider!
+    
+    
+    
+    
     override func viewDidLoad() {
+
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
