@@ -28,18 +28,31 @@ class FirstViewController: UIViewController, UITextFieldDelegate {
     func InitUI() {
         inputTextField.clearButtonMode = .whileEditing
         inputTextField.delegate = self
+        
+        let toolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 35))
+        toolBar.tintColor = UIColor.blue
+        toolBar.backgroundColor = UIColor.gray
+        let barBtnSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let barBtnItem = UIBarButtonItem(title: "完成", style: .plain, target: self, action: #selector(clickDoneBtn(sender:)))
+        toolBar.items = [barBtnSpace, barBtnItem]
+        
+        inputTextField.inputAccessoryView = toolBar
+        
     }
     
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        tipLabel.text = getTipLabelTextWith(value: percentSilder.value)
-        tipTotalLabel.text = getTipTotalLabelTextWith(value: percentSilder.value)
-        return true
+    @objc func clickDoneBtn(sender: UIToolbar) {
+        inputTextField.resignFirstResponder()
     }
     
     @IBAction func moveSlider(_ sender: UISlider) {
         percentLabel.text = getPercentLabelTextWith(value: sender.value)
         tipLabel.text = getTipLabelTextWith(value: sender.value)
         tipTotalLabel.text = getTipTotalLabelTextWith(value: sender.value)
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        tipLabel.text = getTipLabelTextWith(value: percentSilder.value)
+        tipTotalLabel.text = getTipTotalLabelTextWith(value: percentSilder.value)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
