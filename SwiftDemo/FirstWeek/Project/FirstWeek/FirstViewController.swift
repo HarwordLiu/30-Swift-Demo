@@ -22,10 +22,10 @@ class FirstViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        InitUI()
+        initUI()
     }
     
-    func InitUI() {
+    func initUI() {
         inputTextField.clearButtonMode = .whileEditing
         inputTextField.delegate = self
         
